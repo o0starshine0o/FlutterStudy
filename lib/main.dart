@@ -4,6 +4,7 @@
 
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,12 +28,19 @@ class _RandomWordsState extends State<RandomWords> {
   final _suggestion = <WordPair>[];
   final _saved = Set<WordPair>();
   final _biggerFont = TextStyle(fontSize: 18);
+  final _batteryChannel = MethodChannel('com.example.flutter_app/battery');
+  int _batteryLevel = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Startup Name'),
+        title: FlatButton(
+          child: Text('Battery: $_batteryLevel'),
+          onPressed: () {
+            _getBattery();
+          },
+        ),
         actions: [IconButton(icon: Icon(Icons.list), onPressed: _pushSaved)],
       ),
       body: _buildSuggestions(),
@@ -89,5 +97,18 @@ class _RandomWordsState extends State<RandomWords> {
         ),
       );
     }));
+  }
+
+  Future<void> _getBattery() async {
+    try {
+      int result = await _batteryChannel.invokeMethod('getBattery');
+      setState(() {
+        _batteryLevel = result;
+      });
+    } on PlatformException catch (e) {
+      setState(() {
+        _batteryLevel = -1;
+      });
+    }
   }
 }
