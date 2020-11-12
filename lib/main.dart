@@ -104,9 +104,7 @@ class _RandomWordsState extends State<RandomWords> {
   Future<void> _getBattery() async {
     try {
       int result = await _batteryChannel.invokeMethod('getBattery');
-      final request = SearchRequest();
-      request.query = 'query';
-      SearchReplay replay = await Api().search(request);
+      SearchReplay replay = await Api().search(SearchRequest()..query='query');
       setState(() {
         _batteryLevel = result;
         _replay = replay.result;
