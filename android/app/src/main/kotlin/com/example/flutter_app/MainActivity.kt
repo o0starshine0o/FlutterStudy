@@ -6,11 +6,12 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.BatteryManager
 import android.os.Build
+import com.example.flutter_app.pigeon.MessageHandler
+import com.example.pigeon_plugin.Messages
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugins.GeneratedPluginRegistrant
 
 class MainActivity : FlutterActivity() {
     companion object{
@@ -22,6 +23,8 @@ class MainActivity : FlutterActivity() {
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         // 注册方法通道
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, butteryChannel).setMethodCallHandler(this::butteryChannelHandler)
+        // 使用pigeon来完成通信
+        Messages.Api.setup(flutterEngine.dartExecutor.binaryMessenger, MessageHandler())
     }
 
     private fun butteryChannelHandler(call: MethodCall, result: MethodChannel.Result) {

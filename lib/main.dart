@@ -5,6 +5,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/pigeons/messages.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,13 +31,14 @@ class _RandomWordsState extends State<RandomWords> {
   final _biggerFont = TextStyle(fontSize: 18);
   final _batteryChannel = MethodChannel('com.example.flutter_app/battery');
   int _batteryLevel = 0;
+  String _replay = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: FlatButton(
-          child: Text('Battery: $_batteryLevel'),
+          child: Text('$_replay: $_batteryLevel'),
           onPressed: () {
             _getBattery();
           },
@@ -102,12 +104,17 @@ class _RandomWordsState extends State<RandomWords> {
   Future<void> _getBattery() async {
     try {
       int result = await _batteryChannel.invokeMethod('getBattery');
+      final request = SearchRequest();
+      request.query = 'query';
+      SearchReplay replay = await Api().search(request);
       setState(() {
         _batteryLevel = result;
+        _replay = replay.result;
       });
-    } on PlatformException catch (e) {
+    } on PlatformException {
       setState(() {
         _batteryLevel = -1;
+        _replay = '';
       });
     }
   }
