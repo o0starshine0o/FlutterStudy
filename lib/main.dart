@@ -11,13 +11,11 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Startup Name',
-      home: RandomWords(),
-      theme: ThemeData(primaryColor: Colors.white),
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        title: 'Startup Name',
+        home: RandomWords(),
+        theme: ThemeData(primaryColor: Colors.white),
+      );
 }
 
 class RandomWords extends StatefulWidget {
@@ -27,58 +25,49 @@ class RandomWords extends StatefulWidget {
 
 class _RandomWordsState extends State<RandomWords> {
   final _suggestion = <WordPair>[];
-  final _saved = Set<WordPair>();
+  final _saved = <WordPair>{};
   final _biggerFont = TextStyle(fontSize: 18);
   final _batteryChannel = MethodChannel('com.example.flutter_app/battery');
   int _batteryLevel = 0;
   String _replay = '';
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: FlatButton(
-          child: Text('$_replay: $_batteryLevel'),
-          onPressed: () {
-            _getBattery();
-          },
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: FlatButton(
+            child: Text('$_replay: $_batteryLevel'),
+            onPressed: _getBattery,
+          ),
+          actions: [IconButton(icon: Icon(Icons.list), onPressed: _pushSaved)],
         ),
-        actions: [IconButton(icon: Icon(Icons.list), onPressed: _pushSaved)],
-      ),
-      body: _buildSuggestions(),
-    );
-  }
+        body: _buildSuggestions(),
+      );
 
-  Widget _buildSuggestions() {
-    return ListView.builder(
+  Widget _buildSuggestions() => ListView.builder(
         padding: EdgeInsets.all(16),
         itemBuilder: (context, i) {
-          if (i.isOdd) return Divider();
-          final index = i ~/ 2;
-          if (index >= _suggestion.length) _suggestion.addAll(generateWordPairs().take(10));
-          return _buildRow(_suggestion[index]);
-        });
-  }
+          if (i >= _suggestion.length) _suggestion.addAll(generateWordPairs().take(10));
+          return _buildRow(_suggestion[i]);
+        },
+      );
 
   Widget _buildRow(WordPair pair) {
-    final alreadySaved = _saved.contains(pair);
-    return ListTile(
-      title: Text(
-        pair.asPascalCase,
-        style: _biggerFont,
-      ),
-      trailing: Icon(
-        alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved ? Colors.red : null,
-      ),
-      onTap: () {
-        setState(() {
-          if (alreadySaved)
-            _saved.remove(pair);
-          else
-            _saved.add(pair);
-        });
-      },
+    var alreadySaved = _saved.contains(pair);
+    return Column(
+      children: [
+        ListTile(
+          title: Text(
+            pair.asPascalCase,
+            style: _biggerFont,
+          ),
+          trailing: Icon(
+            alreadySaved ? Icons.favorite : Icons.favorite_border,
+            color: alreadySaved ? Colors.red : null,
+          ),
+          onTap: () => _triggerSaved(pair, alreadySaved),
+        ),
+        Divider(),
+      ],
     );
   }
 
@@ -101,10 +90,14 @@ class _RandomWordsState extends State<RandomWords> {
     }));
   }
 
+  void _triggerSaved(WordPair pair, bool alreadySaved) => setState(() {
+        alreadySaved ? _saved.remove(pair) : _saved.add(pair);
+      });
+
   Future<void> _getBattery() async {
     try {
       int result = await _batteryChannel.invokeMethod('getBattery');
-      SearchReplay replay = await Api().search(SearchRequest()..query='query');
+      SearchReplay replay = await Api().search(SearchRequest()..query = 'query');
       setState(() {
         _batteryLevel = result;
         _replay = replay.result;
