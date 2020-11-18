@@ -19,7 +19,8 @@ class _RandomWordsState extends State<RandomWords> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: FlatButton(
+          title: TextButton(
+            style: TextButton.styleFrom(primary: Colors.white),
             child: Text('$_replay: $_batteryLevel'),
             onPressed: _getBattery,
           ),

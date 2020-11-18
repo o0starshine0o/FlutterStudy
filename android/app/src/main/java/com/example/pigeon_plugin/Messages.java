@@ -54,6 +54,7 @@ public class Messages {
   /** Generated interface from Pigeon that represents a handler of messages from Flutter.*/
   public interface Api {
     SearchReplay search(SearchRequest arg);
+    void startIMActivity();
 
     /** Sets up an instance of `Api` to handle messages through the `binaryMessenger` */
     static void setup(BinaryMessenger binaryMessenger, Api api) {
@@ -68,6 +69,25 @@ public class Messages {
               SearchRequest input = SearchRequest.fromMap((HashMap)message);
               SearchReplay output = api.search(input);
               wrapped.put("result", output.toMap());
+            }
+            catch (Exception exception) {
+              wrapped.put("error", wrapError(exception));
+            }
+            reply.reply(wrapped);
+          });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+      {
+        BasicMessageChannel<Object> channel =
+            new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.Api.startIMActivity", new StandardMessageCodec());
+        if (api != null) {
+          channel.setMessageHandler((message, reply) -> {
+            HashMap<String, HashMap> wrapped = new HashMap<>();
+            try {
+              api.startIMActivity();
+              wrapped.put("result", null);
             }
             catch (Exception exception) {
               wrapped.put("error", wrapError(exception));

@@ -1,4 +1,4 @@
-package com.example.flutter_app
+package com.example.flutter_app.ui
 
 import android.content.Context
 import android.content.ContextWrapper
@@ -24,7 +24,7 @@ class MainActivity : FlutterActivity() {
         // 注册方法通道
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, butteryChannel).setMethodCallHandler(this::butteryChannelHandler)
         // 使用pigeon来完成通信
-        Messages.Api.setup(flutterEngine.dartExecutor.binaryMessenger, MessageHandler())
+        Messages.Api.setup(flutterEngine.dartExecutor.binaryMessenger, MessageHandler(this))
     }
 
     private fun butteryChannelHandler(call: MethodCall, result: MethodChannel.Result) {

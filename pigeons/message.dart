@@ -11,4 +11,5 @@ class SearchReplay{
 @HostApi()
 abstract class Api{
   SearchReplay search(SearchRequest request);
+  void startIMActivity();
 }

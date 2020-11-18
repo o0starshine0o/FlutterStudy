@@ -5,6 +5,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/demo/words.dart';
+import 'package:flutter_app/pigeons/messages.dart';
 
 enum BottomNavigationDemoType {
   withLabels,
@@ -63,7 +64,12 @@ class _BottomNavigationDemoState extends State<BottomNavigationDemo> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(_title(context)),
+        title: Center(
+            child: TextButton(
+          style: TextButton.styleFrom(primary: Colors.white),
+          child: Text(_title(context)),
+          onPressed: _startIMActivity,
+        )),
       ),
       body: Center(
         child: PageTransitionSwitcher(
@@ -96,6 +102,12 @@ class _BottomNavigationDemoState extends State<BottomNavigationDemo> {
         backgroundColor: colorScheme.primary,
       ),
     );
+  }
+
+  Future<void> _startIMActivity() async {
+    try {
+      await Api().startIMActivity();
+    } on Exception {}
   }
 }
 

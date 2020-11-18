@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol FLTApi
 -(nullable FLTSearchReplay *)search:(FLTSearchRequest*)input error:(FlutterError *_Nullable *_Nonnull)error;
+-(void)startIMActivity:(FlutterError *_Nullable *_Nonnull)error;
 @end
 
 extern void FLTApiSetup(id<FlutterBinaryMessenger> binaryMessenger, id<FLTApi> _Nullable api);
