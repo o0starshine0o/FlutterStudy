@@ -20,7 +20,7 @@ import kotlin.concurrent.thread
 
 class MyApp : FlutterApplication() {
     companion object {
-        private val TAG = MyApp::class.java.simpleName
+        public const val TAG = "FlutterDemo"
     }
 
     override fun onCreate() {
@@ -50,7 +50,7 @@ class MyApp : FlutterApplication() {
     private fun asyncAnalysis(analysis: IAnalysis) = analysis.asyncInit()
 
     private fun tencentIm() = TUIKit.getConfigs().apply {
-        val userId = "123"
+        val userId = "123321"
         val userSign = generalUserSign(userId)
         sdkConfig = V2TIMSDKConfig().apply { setLogLevel(V2TIM_LOG_INFO) }
         customFaceConfig = CustomFaceConfig()

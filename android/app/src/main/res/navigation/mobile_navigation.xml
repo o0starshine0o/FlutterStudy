@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navHome">
+
+    <fragment
+        android:id="@+id/navHome"
+        android:name="com.example.flutter_app.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/actionNavHomeToNavNotifications"
+            app:destination="@id/navNotifications" >
+            <argument
+                android:name="id"
+                app:argType="string"
+                android:defaultValue="0" />
+            <argument
+                android:name="title"
+                app:argType="string"
+                android:defaultValue="0" />
+            <argument
+                android:name="isGroup"
+                app:argType="boolean"
+                android:defaultValue="false" />
+        </action>
+        <argument
+            android:name="id"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="isGroup"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navDashboard"
+        android:name="com.example.flutter_app.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navNotifications"
+        android:name="com.example.flutter_app.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+</navigation>

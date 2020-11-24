@@ -65,9 +65,7 @@ object UserSignUtils {
      *
      * 文档：https://cloud.tencent.com/document/product/269/32688#Server
      */
-    fun generalUserSign(userId: String): String? {
-        return genTLSSignature(SdkAppId.toLong(), userId, ExpireTime.toLong(), null, SecretKey)
-    }
+    fun generalUserSign(userId: String) = genTLSSignature(SdkAppId.toLong(), userId, ExpireTime.toLong(), null, SecretKey)
 
     /**
      * 生成 tls 票据
@@ -79,7 +77,7 @@ object UserSignUtils {
      * @param priKeyContent 生成 tls 票据使用的私钥内容
      * @return 如果出错，会返回为空，或者有异常打印，成功返回有效的票据
      */
-    private fun genTLSSignature(sdkAppId: Long, userId: String, expire: Long, userBuffer: ByteArray?, priKeyContent: String): String? {
+    private fun genTLSSignature(sdkAppId: Long, userId: String, expire: Long, userBuffer: ByteArray?, priKeyContent: String): String {
         if (TextUtils.isEmpty(priKeyContent)) {
             return ""
         }
@@ -123,22 +121,14 @@ object UserSignUtils {
 
 
     private fun sha256(sdkAppId: Long, userId: String, currTime: Long, expire: Long, priKeyContent: String, base64UserBuffer: String?): String {
-        var contentToBeSigned = """
-            TLS.identifier:$userId
-            TLS.sdkappid:$sdkAppId
-            TLS.time:$currTime
-            TLS.expire:$expire
-            
-            """.trimIndent()
-        if (null != base64UserBuffer) {
-            contentToBeSigned += "TLS.userbuf:$base64UserBuffer\n"
-        }
+        var contentToBeSigned = "TLS.identifier:$userId\nTLS.sdkappid:$sdkAppId\nTLS.time:$currTime\nTLS.expire:$expire\n"
+        if (null != base64UserBuffer) contentToBeSigned += "TLS.userbuf:$base64UserBuffer\n"
         return try {
-            val byteKey = priKeyContent.toByteArray(charset("UTF-8"))
-            val hmac: Mac = Mac.getInstance("HmacSHA256")
+            val byteKey = priKeyContent.toByteArray()
+            val hmac = Mac.getInstance("HmacSHA256")
             val keySpec = SecretKeySpec(byteKey, "HmacSHA256")
             hmac.init(keySpec)
-            val byteSig: ByteArray = hmac.doFinal(contentToBeSigned.toByteArray(charset("UTF-8")))
+            val byteSig = hmac.doFinal(contentToBeSigned.toByteArray())
             String(Base64.encode(byteSig, Base64.NO_WRAP))
         } catch (e: Exception) {
             e.printStackTrace()
