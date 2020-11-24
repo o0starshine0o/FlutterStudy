@@ -18,7 +18,7 @@ object UserSignUtils {
      * 进入腾讯云云通信[控制台](https://console.cloud.tencent.com/avc ) 创建应用，即可看到 SDKAppId，
      * 它是腾讯云用于区分客户的唯一标识。
      */
-    const val SdkAppId = 1400445955
+    const val SdkAppId = 1400453709
 
 
     /**
@@ -43,7 +43,7 @@ object UserSignUtils {
      * 注意：该方案仅适用于调试Demo，正式上线前请将 UserSig 计算代码和密钥迁移到您的后台服务器上，以避免加密密钥泄露导致的流量盗用。
      * 文档：https://cloud.tencent.com/document/product/269/32688#Server
      */
-    private const val SecretKey = "2e6605aff8f35ca1361b089a9d6ff631ea771a8524bc22263423f28640620099"
+    private const val SecretKey = "ec0ba437b6a5150027b10a829face22ac8cdcb8ea089516f0f0933527f27c081"
 
     /**
      * 计算 UserSig 签名

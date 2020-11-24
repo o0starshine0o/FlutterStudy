@@ -4,4 +4,19 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_add_more">AddMoreActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="hint_add_user_id">Please Input ID</string>
+    <string name="hint_add_wording">Please Input Confirm Message</string>
+    <string name="contact_add">Add</string>
+    <string name="user_id">Other Side ID</string>
+    <string name="add_wording">Confirm Message</string>
 </resources>

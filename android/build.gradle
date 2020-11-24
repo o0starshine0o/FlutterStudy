@@ -2,8 +2,12 @@ buildscript {
     ext.kotlin_version = '1.4.10'
     ext.nav_version = '2.3.1'
     repositories {
-        maven { url 'https://dl.bintray.com/umsdk/release' }
+        mavenLocal()
+        mavenCentral()
         jcenter()
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+        maven { url "https://mirrors.tencent.com/repository/maven/tencent_public"}
+        maven { url "https://mirrors.tencent.com/repository/maven/liteavsdk" }
         google()
     }
 
@@ -16,8 +20,12 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url 'https://dl.bintray.com/umsdk/release' }
+        mavenLocal()
+        mavenCentral()
         jcenter()
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+        maven { url "https://mirrors.tencent.com/repository/maven/tencent_public"}
+        maven { url "https://mirrors.tencent.com/repository/maven/liteavsdk" }
         google()
     }
 }

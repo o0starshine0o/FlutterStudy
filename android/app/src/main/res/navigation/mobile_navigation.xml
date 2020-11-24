@@ -12,39 +12,68 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/actionNavHomeToNavNotifications"
-            app:destination="@id/navNotifications" >
+            app:destination="@id/navNotifications">
             <argument
                 android:name="id"
-                app:argType="string"
-                android:defaultValue="0" />
+                android:defaultValue="0"
+                app:argType="string" />
             <argument
                 android:name="title"
-                app:argType="string"
-                android:defaultValue="0" />
+                android:defaultValue="0"
+                app:argType="string" />
             <argument
                 android:name="isGroup"
-                app:argType="boolean"
-                android:defaultValue="false" />
+                android:defaultValue="false"
+                app:argType="boolean" />
         </action>
         <argument
             android:name="id"
-            app:argType="string"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="string" />
         <argument
             android:name="title"
-            app:argType="string"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="string" />
         <argument
             android:name="isGroup"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
 
     <fragment
         android:id="@+id/navDashboard"
         android:name="com.example.flutter_app.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/actionNavDashboardToNavNotifications"
+            app:destination="@id/navNotifications">
+            <argument
+                android:name="id"
+                android:defaultValue="0"
+                app:argType="string" />
+            <argument
+                android:name="title"
+                android:defaultValue="0"
+                app:argType="string" />
+            <argument
+                android:name="isGroup"
+                android:defaultValue="false"
+                app:argType="boolean" />
+        </action>
+        <argument
+            android:name="id"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="isGroup"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
 
     <fragment
         android:id="@+id/navNotifications"
