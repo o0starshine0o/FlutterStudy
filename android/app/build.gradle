@@ -104,7 +104,8 @@ dependencies {
     implementation 'com.umeng.umsdk:oaid_oppo:1.0.4'
     implementation 'com.umeng.umsdk:oaid_vivo:1.0.0.1'
 
-    implementation 'com.tencent.imsdk:tuikit:5.1.2'
+     implementation project(':tuikit')
+//    implementation 'com.tencent.imsdk:tuikit:5.1.2'
     implementation 'com.tencent.liteav:LiteAVSDK_TRTC:8.0.9639'
 //    implementation 'com.tencent.imsdk:tuikit-live:5.1.1'
 }

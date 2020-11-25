@@ -42,11 +42,11 @@ class _BottomNavigationDemoState extends State<BottomNavigationDemo> {
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.calendar_today),
-        label: '日历',
+        label: 'Virtual',
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.account_circle),
-        label: '账号',
+        label: 'Hybrid',
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.alarm_on),
@@ -123,9 +123,9 @@ class _NavigationDestinationView extends StatelessWidget {
     switch (item.label) {
       case '注释':
         return RandomWords();
-      case '日历':
+      case 'Virtual':
         return ChatLayoutVirtual();
-      case '账号':
+      case 'Hybrid':
         return ChatLayoutHybrid();
       default:
         return Center(

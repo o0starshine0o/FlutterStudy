@@ -10,12 +10,12 @@ import com.example.flutter_app.pigeon.MessageHandler
 import com.example.flutter_app.platform.ChatViewPlugin
 import com.example.pigeon_plugin.Messages
 import com.tencent.qcloud.tim.uikit.modules.chat.base.ChatInfo
-import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-class MainActivity : FlutterActivity() {
+class MainActivity : FlutterFragmentActivity() {
     companion object {
         // 这是通道名称
         private const val butteryChannel = "com.example.flutter_app/battery"
@@ -30,7 +30,7 @@ class MainActivity : FlutterActivity() {
         // 使用pigeon来完成通信
         Messages.Api.setup(flutterEngine.dartExecutor.binaryMessenger, MessageHandler(this))
         // 注册原生控件,供flutter使用过
-        flutterEngine.plugins.add(ChatViewPlugin(ChatInfo().apply {
+        flutterEngine.plugins.add(ChatViewPlugin(this, ChatInfo().apply {
             id = "123456"
             chatName = "测试EmbedView"
             isTopChat = false

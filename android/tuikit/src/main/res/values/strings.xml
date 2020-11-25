@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pic">Album</string>
+    <string name="photo">Camera</string>
+    <string name="video">Video</string>
+    <string name="file">file</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="sure">OK</string>
+
+    <string name="un_download">Not Downloaded</string>
+    <string name="downloaded">Downloaded</string>
+    <string name="downloading">Downloading...</string>
+    <string name="sending">sending...</string>
+    <string name="sended">send</string>
+    <string name="has_read">have read</string>
+    <string name="unread">unread</string>
+    <string name="typing">typing...</string>
+
+    <string name="chat_to_top">Sticky on Top</string>
+    <string name="send">Send</string>
+
+    <string name="group_id">Group ID</string>
+    <string name="group_name">Group Name</string>
+    <string name="group_icon">Modify Group Photo</string>
+    <string name="group_notice">Group Notice</string>
+    <string name="group_members">Group Members</string>
+    <string name="group_type">Group Type</string>
+    <string name="add_group_member">Add Group Member</string>
+    <string name="remove_group_member">Remove Group Member</string>
+    <string name="join_group_type">Join Group Type</string>
+    <string name="in_group_nick_name">My Alias in Group</string>
+    <string name="dissolve">Dissmiss Group</string>
+    <string name="modify_group_name">Modify Group Name</string>
+    <string name="modify_group_notice">Modify Group Notice</string>
+    <string name="modify_nick_name_in_goup">Modify My Alias in Group</string>
+    <string name="create_group">Created Group</string>
+
+    <string name="group_detail">Group Detail</string>
+    <string name="accept">Accept</string>
+    <string name="refuse">Refuse</string>
+    <string name="group_apply_members">Group Application</string>
+    <string name="accepted">Accepted</string>
+    <string name="refused">Refused</string>
+    <string name="group_apply_tips">%1$d Group Application</string>
+    <string name="group_apply_click_handle">Click Handle</string>
+    <string name="group_remove_member">Remove Group Chat</string>
+    <string name="group_join_type">Join Group Way</string>
+    <string name="modify_group_name_success">Successfully Modified Group Name</string>
+    <string name="modify_group_notice_success">Successfully Modified Group Notice</string>
+    <string name="exit_group">Exit Group</string>
+    <string name="modify_nickname_success">Successfully Modified Nickname</string>
+    <string name="view_original_image">View Original Photo</string>
+
+    <string name="at_all">All</string>
+    <string name="ui_at_all">[@all]</string>
+    <string name="ui_at_me">[@me]</string>
+    <string name="ui_at_all_me">[@All][@me]</string>
+
+    <string name="date_yesterday">yesterday</string>
+    <string name="date_tommorow">tommorow</string>
+    <string name="date_year">year</string>
+    <string name="date_month">month</string>
+    <string name="date_day">day</string>
+    <string name="date_hour">hour</string>
+    <string name="date_minute">minute</string>
+    <string name="date_second">second</string>
+
+    <string name="date_year_short">y</string>
+    <string name="date_month_short">m</string>
+    <string name="date_day_short">d</string>
+    <string name="date_hour_short">h</string>
+    <string name="date_minute_short">m</string>
+    <string name="date_second_short">s</string>
+
+    <!-- 联系人相关 -->
+    <string name="new_friend">New Friends</string>
+    <string name="group">Group Chats</string>
+    <string name="blacklist">Blacklist</string>
+    <string name="contact_count">%d Friends</string>
+    <string name="contact_title">Contacts</string>
+    <string name="conversation_title">Tencent·IM</string>
+
+    <!-- 好友资料 -->
+    <string name="profile_detail">Details</string>
+    <string name="profile_id">Account</string>
+    <string name="profile_add_wording">Verification Message</string>
+    <string name="profile_remark">Alias</string>
+    <string name="profile_black">Add Blacklist</string>
+    <string name="profile_remark_edit">Modify Alias</string>
+    <string name="profile_chat">Send Message</string>
+    <string name="profile_del">Delete Friend</string>
+
+    <string name="search_call_hint">Group Member Name</string>
+    <string name="video_call">Video Call</string>
+    <string name="audio_call">Voice Call</string>
+
+    <string name="live_group_live">Live Group</string>
+    <string name="live_group_live_streaming">Live Streaming</string>
+    <string name="live_group_live_end">Live Over</string>
+    <string name="live_group_user_live">%s Live</string>
+</resources>
