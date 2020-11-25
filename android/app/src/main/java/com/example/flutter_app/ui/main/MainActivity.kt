@@ -1,4 +1,4 @@
-package com.example.flutter_app.ui
+package com.example.flutter_app.ui.main
 
 import android.content.Context
 import android.content.ContextWrapper
@@ -7,24 +7,34 @@ import android.content.IntentFilter
 import android.os.BatteryManager
 import android.os.Build
 import com.example.flutter_app.pigeon.MessageHandler
+import com.example.flutter_app.platform.ChatViewPlugin
 import com.example.pigeon_plugin.Messages
+import com.tencent.qcloud.tim.uikit.modules.chat.base.ChatInfo
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
-    companion object{
+    companion object {
         // 这是通道名称
         private const val butteryChannel = "com.example.flutter_app/battery"
+
         // 这是通道里面方法的名称
         private const val butteryMethod = "getBattery"
     }
+
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         // 注册方法通道
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, butteryChannel).setMethodCallHandler(this::butteryChannelHandler)
         // 使用pigeon来完成通信
         Messages.Api.setup(flutterEngine.dartExecutor.binaryMessenger, MessageHandler(this))
+        // 注册原生控件,供flutter使用过
+        flutterEngine.plugins.add(ChatViewPlugin(ChatInfo().apply {
+            id = "123456"
+            chatName = "测试EmbedView"
+            isTopChat = false
+        }))
     }
 
     private fun butteryChannelHandler(call: MethodCall, result: MethodChannel.Result) {

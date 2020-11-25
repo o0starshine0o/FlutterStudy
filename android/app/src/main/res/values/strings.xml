@@ -19,4 +19,5 @@
     <string name="contact_add">Add</string>
     <string name="user_id">Other Side ID</string>
     <string name="add_wording">Confirm Message</string>
+    <string name="title_activity_leak">LeakActivity</string>
 </resources>

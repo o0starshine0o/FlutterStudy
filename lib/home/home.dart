@@ -4,6 +4,8 @@
 
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/chat/chat_hybrid.dart';
+import 'package:flutter_app/chat/chat_virtual.dart';
 import 'package:flutter_app/demo/words.dart';
 import 'package:flutter_app/pigeons/messages.dart';
 
@@ -121,6 +123,10 @@ class _NavigationDestinationView extends StatelessWidget {
     switch (item.label) {
       case '注释':
         return RandomWords();
+      case '日历':
+        return ChatLayoutVirtual();
+      case '账号':
+        return ChatLayoutHybrid();
       default:
         return Center(
           child: Text(item.label),

@@ -2,6 +2,7 @@ package com.example.flutter_app.app
 
 import android.content.Context
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.multidex.MultiDex
 import com.example.flutter_app.analysis.IAnalysis
 import com.example.flutter_app.analysis.UmengAnalysis
@@ -20,7 +21,9 @@ import kotlin.concurrent.thread
 
 class MyApp : FlutterApplication() {
     companion object {
-        public const val TAG = "FlutterDemo"
+        const val TAG = "FlutterDemo"
+        // 这里故意泄漏一个AppCompatActivity,只是为了让Flutter兼容AppCompatActivity
+        lateinit var compatActivity:AppCompatActivity
     }
 
     override fun onCreate() {
