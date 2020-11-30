@@ -14,16 +14,16 @@ enum BottomNavigationDemoType {
   withoutLabels,
 }
 
-class BottomNavigationDemo extends StatefulWidget {
-  const BottomNavigationDemo({Key key, @required this.type}) : super(key: key);
+class BottomNavigation extends StatefulWidget {
+  const BottomNavigation(this.type, {Key key }) : super(key: key);
 
   final BottomNavigationDemoType type;
 
   @override
-  _BottomNavigationDemoState createState() => _BottomNavigationDemoState();
+  _BottomNavigationState createState() => _BottomNavigationState();
 }
 
-class _BottomNavigationDemoState extends State<BottomNavigationDemo> {
+class _BottomNavigationState extends State<BottomNavigation> {
   int _currentIndex = 0;
 
   String _title(BuildContext context) {

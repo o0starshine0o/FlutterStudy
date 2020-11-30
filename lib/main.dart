@@ -3,16 +3,20 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/home/home.dart';
+import 'package:flutter_app/router/router_delegate.dart';
+import 'package:flutter_app/router/router_parser.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        title: 'Startup Name',
-        home: BottomNavigationDemo(
-          type: BottomNavigationDemoType.withoutLabels,
-        ),
-      );
+  State<StatefulWidget> createState() => _AppState();
+}
+
+class _AppState extends State<MyApp> {
+  var _informationParser = MyRouteInformationParser();
+  var _routerDelegate = MyRouterDelegate();
+
+  @override
+  Widget build(BuildContext context) => MaterialApp.router(routeInformationParser: _informationParser, routerDelegate: _routerDelegate);
 }
