@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/demo/suggestion.dart';
 import 'package:flutter_app/home/home.dart';
+import 'package:flutter_app/router/router_map.dart';
 
 /// Instead, you might choose to use different classes that implement a superclass, or manage the route information in another way
 /// 这个类后期可以放到外头去,通过接口等形式完成
 class RouterPath {
   // 静态实例,跟随类加载创建
   static final _singleton = RouterPath._internal();
-  final _navigation = BottomNavigation(BottomNavigationDemoType.withoutLabels);
-  final _suggestion = Suggestion();
 
   // 保存所有的路由界面
-  Map<String, Widget> map;
+  Map<String, Widget> map = RouterMap.map;
 
   // 保存当前的路由路径
-  Uri _uri;
+  Uri _uri = Uri.parse('/');
 
   // 初始化的,默认第一个页面的uri为'/'
-  RouterPath._internal() {
-    _uri = Uri.parse('/');
-    map = {'$BottomNavigation': _navigation, '$Suggestion': _suggestion};
-  }
+  RouterPath._internal();
 
   // 通过factory实现单例,调用new方法也只会返回这个单例
   factory RouterPath() => _singleton;
