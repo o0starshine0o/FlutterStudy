@@ -110,12 +110,19 @@ packages:
     source: hosted
     version: "1.8.0-nullsafety.1"
   pigeon:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: pigeon
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.14"
+    version: "0.1.15"
+  provider:
+    dependency: "direct main"
+    description:
+      name: provider
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.2.0"
   sky_engine:
     dependency: transitive
     description: flutter

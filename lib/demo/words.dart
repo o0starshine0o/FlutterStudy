@@ -1,9 +1,10 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/global/global.dart';
+import 'package:flutter_app/demo/saved_words.dart';
 import 'package:flutter_app/pigeons/messages.dart';
 import 'package:flutter_app/router/router_delegate.dart';
+import 'package:provider/provider.dart';
 
 class RandomWords extends StatefulWidget {
   @override
@@ -39,32 +40,29 @@ class _RandomWordsState extends State<RandomWords> {
       );
 
   Widget _buildRow(WordPair pair) {
-    var alreadySaved = Global.saved.contains(pair);
-    return Column(
-      children: [
-        ListTile(
-          title: Text(
-            pair.asPascalCase,
-            style: _biggerFont,
+    return Consumer<SavedWords>(
+      builder: (context, words, child) => Column(
+        children: [
+          ListTile(
+            title: Text(
+              pair.asPascalCase,
+              style: _biggerFont,
+            ),
+            trailing: Icon(
+              words.contains(pair) ? Icons.favorite : Icons.favorite_border,
+              color: words.contains(pair) ? Colors.red : null,
+            ),
+            onTap: () => Provider.of<SavedWords>(context).trigger(pair),
           ),
-          trailing: Icon(
-            alreadySaved ? Icons.favorite : Icons.favorite_border,
-            color: alreadySaved ? Colors.red : null,
-          ),
-          onTap: () => _triggerSaved(pair, alreadySaved),
-        ),
-        Divider(),
-      ],
+          Divider(),
+        ],
+      ),
     );
   }
 
   void _pushSaved() {
     MyRouterDelegate().push('suggestion');
   }
-
-  void _triggerSaved(WordPair pair, bool alreadySaved) => setState(() {
-        alreadySaved ? Global.saved.remove(pair) : Global.saved.add(pair);
-      });
 
   Future<void> _getBattery() async {
     try {

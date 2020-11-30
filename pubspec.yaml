@@ -30,12 +30,14 @@ dependencies:
   english_words: ^3.1.5
   # High quality pre-built Animations for Flutter
   animations: ^1.1.2
+  # Pigeon is a code generator tool to make communication between Flutter and the host platform type-safe and easier.
+  pigeon: ^0.1.14
+  # Simple app state management
+  provider: ^3.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  # Pigeon is a code generator tool to make communication between Flutter and the host platform type-safe and easier.
-  pigeon: ^0.1.14
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,12 +1,20 @@
 // Copyright 2018 The Flutter team. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
 import 'package:flutter/material.dart';
+import 'package:flutter_app/demo/saved_words.dart';
 import 'package:flutter_app/router/router_delegate.dart';
 import 'package:flutter_app/router/router_parser.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => SavedWords(),
+        )
+      ],
+      child: MyApp(),
+    ));
 
 class MyApp extends StatefulWidget {
   @override

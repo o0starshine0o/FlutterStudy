@@ -49,7 +49,14 @@ class MyRouterDelegate extends RouterDelegate<RouterPath> with ChangeNotifier, P
 
   /// 响应返回按钮
   @override
-  Future<bool> popRoute() async => RouterPath().pop();
+  Future<bool> popRoute() async {
+    RouterPath().pop();
+    _pages.removeLast();
+
+    /// 通知MyRouterDelegate调用build()来完成页面的更新
+    notifyListeners();
+    return true;
+  }
 
   /// Step3:
   /// When notifyListeners is called, it tells the Router to rebuild the RouterDelegate (using its build() method)

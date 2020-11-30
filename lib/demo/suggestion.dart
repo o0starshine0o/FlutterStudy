@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/global/global.dart';
+import 'package:flutter_app/demo/saved_words.dart';
+import 'package:provider/provider.dart';
 
 class Suggestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final tiles = Global.saved.map((pair) => ListTile(
-          title: Text(
-            pair.asPascalCase,
-            style: TextStyle(fontSize: 18),
-          ),
-        ));
+    final tiles = Provider.of<SavedWords>(context, listen: false).words.map((pair) => ListTile(
+            title: Text(
+          pair.asPascalCase,
+          style: TextStyle(fontSize: 18),
+        )));
     return Scaffold(
       appBar: AppBar(
         title: Text("Saved Suggestion"),

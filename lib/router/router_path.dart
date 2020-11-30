@@ -28,7 +28,7 @@ class RouterPath {
 
 // 弹出最后一个
   bool pop() {
-    uriString((List.of(_uri.pathSegments)..removeLast()).join('/'));
+    uriString('/${(List.of(_uri.pathSegments)..removeLast()).join('/')}');
     return true;
   }
 
@@ -41,6 +41,6 @@ class RouterPath {
       // 默认进来就是空的,这里需要做一个转换
       _uri = Uri.parse('/home');
     else
-      Uri.parse(uri);
+      _uri = Uri.parse(uri);
   }
 }
