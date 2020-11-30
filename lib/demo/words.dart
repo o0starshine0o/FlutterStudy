@@ -2,6 +2,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/demo/saved_words.dart';
+import 'package:flutter_app/demo/suggestion.dart';
 import 'package:flutter_app/pigeons/messages.dart';
 import 'package:flutter_app/router/router_delegate.dart';
 import 'package:provider/provider.dart';
@@ -61,7 +62,7 @@ class _RandomWordsState extends State<RandomWords> {
   }
 
   void _pushSaved() {
-    MyRouterDelegate().push('suggestion');
+    MyRouterDelegate().push(Suggestion);
   }
 
   Future<void> _getBattery() async {

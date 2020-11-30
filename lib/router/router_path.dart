@@ -7,23 +7,28 @@ import 'package:flutter_app/home/home.dart';
 class RouterPath {
   // 静态实例,跟随类加载创建
   static final _singleton = RouterPath._internal();
+  final _navigation = BottomNavigation(BottomNavigationDemoType.withoutLabels);
+  final _suggestion = Suggestion();
 
   // 保存所有的路由界面
-  Map<String, Widget> map = {'home': BottomNavigation(BottomNavigationDemoType.withoutLabels), 'suggestion': Suggestion()};
+  Map<String, Widget> map;
 
   // 保存当前的路由路径
   Uri _uri;
 
-  // 初始化的,默认第一个页面的uri为'/home'
-  RouterPath._internal() : _uri = Uri.parse('/home');
+  // 初始化的,默认第一个页面的uri为'/'
+  RouterPath._internal() {
+    _uri = Uri.parse('/');
+    map = {'$BottomNavigation': _navigation, '$Suggestion': _suggestion};
+  }
 
   // 通过factory实现单例,调用new方法也只会返回这个单例
   factory RouterPath() => _singleton;
 
   /// 兼容Navigation1.0,通过push的方式添加一个页面
-  Widget push(String destination) {
+  Widget push(Type destination) {
     uriString('${_uri.path}/$destination');
-    return map[destination];
+    return map['$destination'];
   }
 
 // 弹出最后一个
@@ -39,7 +44,7 @@ class RouterPath {
   uriString(String uri) {
     if (uri == '/')
       // 默认进来就是空的,这里需要做一个转换
-      _uri = Uri.parse('/home');
+      _uri = Uri.parse('/$BottomNavigation');
     else
       _uri = Uri.parse(uri);
   }

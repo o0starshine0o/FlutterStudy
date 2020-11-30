@@ -15,9 +15,10 @@ class MyRouterDelegate extends RouterDelegate<RouterPath> with ChangeNotifier, P
   // 保存所有页面,类似于activity栈
   List<Page> _pages = [];
 
-  void push(String destination) {
+  void push(Type destination) {
     /// 先修改路由表,再往_pages里面添加页面
     _pages.add(MaterialPage(key: ValueKey(destination), child: RouterPath().push(destination)));
+    print("push to $destination with uri: ${RouterPath().uri}");
 
     /// 通知MyRouterDelegate调用build()来完成页面的更新
     notifyListeners();
@@ -52,6 +53,7 @@ class MyRouterDelegate extends RouterDelegate<RouterPath> with ChangeNotifier, P
   Future<bool> popRoute() async {
     RouterPath().pop();
     _pages.removeLast();
+    print("popRoute with uri:${RouterPath().uri}");
 
     /// 通知MyRouterDelegate调用build()来完成页面的更新
     notifyListeners();
