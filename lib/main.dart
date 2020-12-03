@@ -2,10 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 import 'package:flutter/material.dart';
-import 'package:flutter_app/demo/saved_words.dart';
-import 'package:flutter_app/router/router_delegate.dart';
-import 'package:flutter_app/router/router_parser.dart';
 import 'package:provider/provider.dart';
+
+import 'router/router_delegate.dart';
+import 'router/router_parser.dart';
+import 'words/saved_words.dart';
 
 void main() => runApp(MultiProvider(
       providers: [

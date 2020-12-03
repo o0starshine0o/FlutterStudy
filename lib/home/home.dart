@@ -6,8 +6,8 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/chat/chat_hybrid.dart';
 import 'package:flutter_app/chat/chat_virtual.dart';
-import 'package:flutter_app/demo/words.dart';
 import 'package:flutter_app/pigeons/messages.dart';
+import 'package:flutter_app/words/words.dart';
 
 enum BottomNavigationDemoType {
   withLabels,
@@ -38,7 +38,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     var bottomNavigationBarItems = <BottomNavigationBarItem>[
       BottomNavigationBarItem(
         icon: Icon(Icons.add_comment),
-        label: '注释',
+        label: 'Words',
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.calendar_today),
@@ -121,7 +121,7 @@ class _NavigationDestinationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (item.label) {
-      case '注释':
+      case 'Words':
         return RandomWords();
       case 'Virtual':
         return ChatLayoutVirtual();

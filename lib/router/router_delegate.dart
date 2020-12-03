@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/router/router_path.dart';
+
+import 'router_path.dart';
+
 
 class MyRouterDelegate extends RouterDelegate<RouterPath> with ChangeNotifier, PopNavigatorRouterDelegateMixin<RouterPath> {
   // 静态实例,跟随类加载创建

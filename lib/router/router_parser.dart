@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/router/router_path.dart';
+
+import 'router_path.dart';
 
 class MyRouteInformationParser extends RouteInformationParser<RouterPath> {
   /// Step1:

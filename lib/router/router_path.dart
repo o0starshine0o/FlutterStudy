@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/home/home.dart';
-import 'package:flutter_app/router/router_map.dart';
+
+import 'router_map.dart';
 
 /// Instead, you might choose to use different classes that implement a superclass, or manage the route information in another way
 /// 这个类后期可以放到外头去,通过接口等形式完成

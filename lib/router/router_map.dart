@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/demo/suggestion.dart';
 import 'package:flutter_app/home/home.dart';
+import 'package:flutter_app/words/suggestion.dart';
 
 class RouterMap{
   static final _navigation = BottomNavigation(BottomNavigationDemoType.withoutLabels);

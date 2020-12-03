@@ -1,11 +1,12 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/demo/saved_words.dart';
-import 'package:flutter_app/demo/suggestion.dart';
 import 'package:flutter_app/pigeons/messages.dart';
 import 'package:flutter_app/router/router_delegate.dart';
 import 'package:provider/provider.dart';
+
+import 'saved_words.dart';
+import 'suggestion.dart';
 
 class RandomWords extends StatefulWidget {
   @override
@@ -19,6 +20,12 @@ class _RandomWordsState extends State<RandomWords> {
   int _batteryLevel = 0;
   String _replay = '';
 
+
+  @override
+  void initState() {
+
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -27,17 +34,15 @@ class _RandomWordsState extends State<RandomWords> {
             child: Text('$_replay: $_batteryLevel'),
             onPressed: _getBattery,
           ),
-          actions: [IconButton(icon: Icon(Icons.list), onPressed: _pushSaved)],
+          actions: [IconButton(icon: Icon(Icons.list), onPressed: () => MyRouterDelegate().push(Suggestion))],
         ),
-        body: _buildSuggestions(),
-      );
-
-  Widget _buildSuggestions() => ListView.builder(
-        padding: EdgeInsets.all(16),
-        itemBuilder: (context, i) {
-          if (i >= _suggestion.length) _suggestion.addAll(generateWordPairs().take(10));
-          return _buildRow(_suggestion[i]);
-        },
+        body: ListView.builder(
+          padding: EdgeInsets.all(16),
+          itemBuilder: (context, i) {
+            if (i >= _suggestion.length) _suggestion.addAll(generateWordPairs().take(10));
+            return _buildRow(_suggestion[i]);
+          },
+        ),
       );
 
   Widget _buildRow(WordPair pair) {
@@ -59,10 +64,6 @@ class _RandomWordsState extends State<RandomWords> {
         ],
       ),
     );
-  }
-
-  void _pushSaved() {
-    MyRouterDelegate().push(Suggestion);
   }
 
   Future<void> _getBattery() async {

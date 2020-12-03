@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/demo/saved_words.dart';
 import 'package:provider/provider.dart';
+
+import 'saved_words.dart';
 
 class Suggestion extends StatelessWidget {
   @override
