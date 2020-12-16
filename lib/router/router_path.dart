@@ -38,10 +38,7 @@ class RouterPath {
 
   // 完全自定义栈
   uriString(String uri) {
-    if (uri == '/')
-      // 默认进来就是空的,这里需要做一个转换
-      _uri = Uri.parse('/$BottomNavigation');
-    else
-      _uri = Uri.parse(uri);
+    // 默认进来就是空的,这里需要做一个转换
+    _uri = Uri.parse(uri == '/' ? '/$BottomNavigation' : uri);
   }
 }

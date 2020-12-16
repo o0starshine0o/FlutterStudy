@@ -56,7 +56,6 @@ class MyRouterDelegate extends RouterDelegate<RouterPath> with ChangeNotifier, P
     RouterPath().pop();
     _pages.removeLast();
     print("popRoute with uri:${RouterPath().uri}");
-
     /// 通知MyRouterDelegate调用build()来完成页面的更新
     notifyListeners();
     return true;
@@ -69,7 +68,6 @@ class MyRouterDelegate extends RouterDelegate<RouterPath> with ChangeNotifier, P
   @override
   Widget build(BuildContext context) => Navigator(
       pages: List.of(_pages),
-
       /// This function is called whenever Navigator.pop() is called.
       /// It should be used to update the state (that determines the list of pages),
       /// and it must call didPop on the route to determine if the pop succeeded
@@ -79,9 +77,7 @@ class MyRouterDelegate extends RouterDelegate<RouterPath> with ChangeNotifier, P
         // if (!route.didPop(result)) {
         //   return false;
         // }
-
         // RouterPath().pop();
-
         /// The onPopPage callback now uses notifyListeners instead of setState, since this class is now a ChangeNotifier, not a widget
         /// 关闭成功了,需要更新路由表,并且移除_pages中对应的Page
         notifyListeners();
